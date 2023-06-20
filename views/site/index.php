@@ -167,7 +167,7 @@
       </div>
       <div class="row">
         <div class="col-md-6">
-          <a href="#" class="btn btn-primary btn-lg btn-block mb-3">Valutazione fonti</a>
+          <a href="http://missinformation.localhost/index.php?r=fonti/risultato" class="btn btn-primary btn-lg btn-block mb-3">Valutazione fonti</a>
           <p class="btn-description">Valuta l'affidabilità e l'accuratezza delle fonti di notizie utilizzate .</p>
         </div>
         <div class="col-md-6">
