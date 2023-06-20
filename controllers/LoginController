@@ -1,0 +1,18 @@
+<?php
+
+/*
+Se decidiamo di visualizzare il risulato sulla stessa pagina dell'imput:
+Creare una vista in in image e creare i controller che la gestiscotno
+*/
+namespace app\controllers;
+use Yii;
+use yii\web\Controller;
+use yii\web\Response;
+use yii\filters\VerbFilter;
+use app\models\LoginForm;
+
+class LoginController extends Controller{
+
+  public function actionAccesso(){
+  }
+}
