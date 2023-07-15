@@ -49,18 +49,25 @@
   </head>
 
   <body>
-    <h2>Questo è text</h2>
+    <h2>Questo è Notizia</h2>
     <?php
 
     $form = ActiveForm::begin([
         'options' => [
           'enctype' =>  "multipart/form-data",
         ],
-        'action' => ["text/risultato"],
+        'action' => ["notizia/risultato"],
         'method' => "POST"
       ]);
     ?>
-        <?= $form->field($model, 'text')->textInput(); ?>
+        <?= $form->field($model, 'testo')->textInput()->hint('Inserisci la notizia'); ?>
+        <?= $form->field($model, 'tipo')->dropdownList([
+            1 => 'Testo',
+            2 => 'Immagine',
+            3 => 'Video',
+            4 => 'Audio'
+        ],
+        ['prompt'=>'Seleziona il tipo della notizia']); ?>
         <?= Html::submitButton('Invia', ['class' => 'btn btn-primary']); ?>
 
     <?php
@@ -69,8 +76,8 @@
     ?>
 
     <?php
-      if(isset($_POST["TextForm"])){
-        echo "<h3>Il risultato della operazione è: " . $index . "%</h3>";
+      if(isset($_POST["Notizia"])){
+        echo "<h3>" . $index . "</h3>";
       }
 
     ?>

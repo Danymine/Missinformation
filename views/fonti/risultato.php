@@ -86,7 +86,7 @@ $title = "My Yii Application";
             }
             $score = $results["result"]["score"];
             echo "<h2>Dominio: " . $url . "</h2>" .
-                 "<h3>Categorie: " . $key . "</h3>" .
+                 "<h3>Categoria: " . $key . "</h3>" .
                  "<h3>Score: " . $score . "</h3>"
             ;
           }
@@ -99,6 +99,7 @@ $title = "My Yii Application";
 
           echo "Si è verificato un errore nella richiesta: " . $results;
         }
+
       }
     ?>
 

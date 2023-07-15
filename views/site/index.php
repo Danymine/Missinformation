@@ -1,3 +1,10 @@
+<?php
+
+/** @var yii\web\View $this */
+/** @var string $content */
+
+use yii\helpers\Url;
+?>
 <!DOCTYPE html>
 <html lang="it">
 <head>
@@ -61,35 +68,14 @@
       justify-content: center;
     }
 
+    .navbar-light .navbar-text {
+
+      color: black;
+    }
+
   </style>
 </head>
 <body>
-  <header>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <div class="container">
-        <a class="navbar-brand" href="#">Misinformation Fight</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
-              <a class="nav-link" href="#">Home</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Informazioni</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Servizi</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Contatti</a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
-  </header>
 
   <section class="hero mb-5">
     <div class="container text-center">
@@ -127,53 +113,36 @@
     <div class="container text-center">
       <div class="row">
         <div class="col-md-6">
-          <a href="http://missinformation.localhost/index.php?r=text/risultato" class="btn btn-primary btn-lg btn-block mb-3">Verifica notizia testuale</a>
-          <p class="btn-description">Verifica la veridicità di una notizia utilizzando il testo come input.</p>
+          <?php
+            $url = Url::toRoute(['notizia/risultato']);
+            echo "<a href=\"" . $url . "\" class=\"btn btn-primary btn-lg btn-block mb-3\">Verifica Notizia</a>";
+          ?>
+          <p class="btn-description">Verifica la veridicità di una notizia.</p>
         </div>
         <div class="col-md-6">
-          <a href="http://missinformation.localhost/index.php?r=image/risultato" class="btn btn-primary btn-lg btn-block mb-3">Verifica immagine</a>
-          <p class="btn-description">Effettua un'analisi per rilevare manipolazioni o alterazioni nelle immagini.</p>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-6">
-          <a href="http://missinformation.localhost/index.php?r=text/fonti" class="btn btn-primary btn-lg btn-block mb-3">Valutazione fonti notizie testuali</a>
-          <p class="btn-description">Valuta l'affidabilità e l'accuratezza delle fonti di notizie utilizzate.</p>
+          <?php
+            $url = Url::toRoute(['notizia/simile']);
+            echo "<a href=\"" . $url . "\" class=\"btn btn-primary btn-lg btn-block mb-3\">Ottieni Notizia Simile</a>";
+          ?>
+          <p class="btn-description">Ottieni un elenco di notizie simili a quella che inserisci.</p>
         </div>
         <div class="col-md-6">
-          <a href="http://missinformation.localhost/index.php?r=image/fonti" class="btn btn-primary btn-lg btn-block mb-3">Valutazione fonti notizie immagini</a>
-          <p class="btn-description">Gestisci una lista personalizzata di fonti di notizie non affidabili o di bassa qualità.</p>
+          <?php
+            $url = Url::toRoute(['fonti/risultato']);
+            echo "<a href=\"" . $url . "\" class=\"btn btn-primary btn-lg btn-block mb-3\">Verifica Fonte</a>";
+          ?>
+          <p class="btn-description">Ottieni l'indice di attendibilità di una fonte.</p>
         </div>
-      </div>
-      <div class="row">
-        <div class="col-md-6">
-          <a href="http://missinformation.localhost/index.php?r=video/risultato" class="btn btn-primary btn-lg btn-block mb-3">Verifica video</a>
-          <p class="btn-description">Utilizza tecniche avanzate per identificare video manipolati o contenenti informazioni false.</p>
-        </div>
-        <div class="col-md-6">
-          <a href="#" class="btn btn-primary btn-lg btn-block mb-3">Verifica audio</a>
-          <p class="btn-description">Analizza le registrazioni audio per identificare manipolazioni o falsificazioni dei contenuti.</p>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-6">
-          <a href="http://missinformation.localhost/index.php?r=video/fonti" class="btn btn-primary btn-lg btn-block mb-3">Valutazione fonti video</a>
-          <p class="btn-description">Valuta l'affidabilità e l'accuratezza delle fonti di notizie utilizzate.</p>
-        </div>
-        <div class="col-md-6">
-          <a href="#" class="btn btn-primary btn-lg btn-block mb-3">Valutazione fonti audio</a>
-          <p class="btn-description">Gestisci una lista personalizzata di fonti di notizie non affidabili o di bassa qualità.</p>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-6">
-          <a href="http://missinformation.localhost/index.php?r=fonti/risultato" class="btn btn-primary btn-lg btn-block mb-3">Valutazione fonti</a>
-          <p class="btn-description">Valuta l'affidabilità e l'accuratezza delle fonti di notizie utilizzate .</p>
-        </div>
-        <div class="col-md-6">
-          <a href="#" class="btn btn-primary btn-lg btn-block mb-3">Black list personale</a>
-          <p class="btn-description">Gestisci una lista personalizzata di fonti di notizie non affidabili o di bassa qualità.</p>
-        </div>
+        <?php
+          //setcookie($_COOKIE["Amministratore"], "", time()-43534);
+          //setcookie($_COOKIE["Utente"], "", time()-43534);
+          if(isset($_COOKIE["Utente"]) or isset($_COOKIE["Amministratore"])){
+
+            echo "<div class=\"col-md-6\">";
+            $url = Url::toRoute(['fonti/visualizza']);
+            echo "<a href=\"" . $url . "\" class=\"btn btn-primary btn-lg btn-block mb-3\">Lista Nera</a><p class=\"btn-description\">Visualizza la tua lista nera.</p></div>";
+          }
+        ?>
       </div>
     </div>
   </section>

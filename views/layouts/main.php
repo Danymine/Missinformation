@@ -9,6 +9,7 @@ use yii\bootstrap5\Breadcrumbs;
 use yii\bootstrap5\Html;
 use yii\bootstrap5\Nav;
 use yii\bootstrap5\NavBar;
+use yii\helpers\Url;
 
 AppAsset::register($this);
 
@@ -28,6 +29,67 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
 </head>
 <body class="d-flex flex-column h-100">
 <?php $this->beginBody() ?>
+<header id="header">
+  <nav class="container navbar navbar-expand-md navbar-light bg-light">
+    <?php
+    $url =  Url::home(true);
+    echo "<a class=\"navbar-brand\" href=\"". $url . "\">Missinformation</a>";
+    ?>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarText">
+      <ul class="navbar-nav mr-auto">
+        <?php
+        $url =  Url::home(true);
+        echo "<li class=\"nav-item active\">
+                <a class=\"nav-link\" href=\"" . $url . "\">Home</a>
+              </li>";
+        ?>
+        <li class="nav-item">
+          <a class="nav-link" href="">Informazioni</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Servizi</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Contatti</a>
+        </li>
+        <?php
+          if(isset($_COOKIE["Utente"]) or isset($_COOKIE["Amministratore"])){
+
+            if(isset($_COOKIE["Utente"])){
+
+              $var = $_COOKIE["Utente"];
+            }
+            else{
+
+              $var = $_COOKIE["Amministratore"];
+            }
+            echo "<span class=\"navbar-text\">Bentornato "
+                    . $var .
+                  "</span>";
+            $url = Url::toRoute(['accesso/logout']);
+            echo "<li class=\"nav-item\">
+                    <a class=\"nav-link\" href=\"" . $url . "\">Esci</a>
+                  </li>";
+          }
+          else{
+
+            $url = Url::toRoute(['accesso/login']);
+            echo "<li class=\"nav-item\">
+                    <a class=\"nav-link\" href=\"" . $url . "\">Accedi</a>
+                  </li>";
+            $url = Url::toRoute(['accesso/registrazione']);
+            echo "<li class=\"nav-item\">
+                    <a class=\"nav-link\" href=\"" . $url . "\">Registrati</a>
+                  </li>";
+          }
+        ?>
+      </ul>
+    </div>
+  </nav>
+</header>
 
 <main id="main" class="flex-shrink-0" role="main">
     <div class="container">

@@ -7,18 +7,12 @@ use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\Response;
 use yii\filters\VerbFilter;
-use app\models\LoginForm;
-use app\models\ContactForm;
-use app\models\ImageForm;
+use app\models\Utente;
 
 class SiteController extends Controller
 {
-    /**
-     * {@inheritdoc}
-     */
-     public function actionIndex( ){
-
-
-       return $this->render('index');
-     }
+  public function actionIndex()
+  {
+      return $this->render('index');
+  }
 }
