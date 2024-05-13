@@ -358,7 +358,7 @@ class NotiziaController extends Controller{
     }
     if($testo != "Access Denied"){
 
-      $apikey = "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";
+      $apikey = "API-KEY BY CHATGPT HERE";
       $url = 'https://api.openai.com/v1/completions';
       $data = [
           'max_tokens' => 100,
@@ -437,7 +437,7 @@ class NotiziaController extends Controller{
   private function getIndexText($text){
 
     // NOTE: Utilizziamo OpenAI e li chiediamo se ha conoscenza di quell'evento.
-    $apikey = "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";
+    $apikey = "API-KEY BY CHATGPT HERE";
     $url = 'https://api.openai.com/v1/completions';
     $data = [
         'max_tokens' => 100,
@@ -520,7 +520,7 @@ class NotiziaController extends Controller{
 
   private function queryFonti($query, $use){
 
-    $search = new GoogleSearchResults('b688484cf138380004aac7f1fc384201492f970b964e1fc4685c96cc6cda824e');
+    $search = new GoogleSearchResults('API-KEY GOOGLE SEARCH HERE');
     $data = $search->get_json($query);
     $data = json_decode(json_encode($data), true);
     if(isset($_COOKIE["Utente"])){
