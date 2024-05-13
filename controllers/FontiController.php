@@ -76,8 +76,8 @@ class FontiController extends Controller{
 
 
       //Posso adesso controllare i dati relativi l'URL.
-      $apikey = "dea67ae1-d848-4dd8-a412-3d20164a8d80";
-      $apipassword = "ba158582-80a8-4b4c-bb93-3c856891ecf7";
+      $apikey = "API KEY HERE";
+      $apipassword = "PASSWORD API HERE";
       $urlapi = 'https://api.xforce.ibmcloud.com/url/';
       $requestUrl = $urlapi . $url;
       $ch = curl_init();
