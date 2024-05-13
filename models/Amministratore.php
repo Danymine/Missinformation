@@ -17,14 +17,14 @@ class Amministratore extends Model
       [
         "id" => 1,
         "username" => "Danymine",
-        "password" => "Grottaglie1",
-        "email" => "d.parisi16@studenti.uniba.it"
+        "password" => "PasswordInventata1",
+        "email" => "Daniele@gmail.com"
       ],
       [
         "id" => 2,
         "username" => "Federico",
-        "password" => "Paolosesto0",
-        "email" => "f.pignatelli18@studenti.uniba.it"
+        "password" => "PasswordInventata1",
+        "email" => "federico@gmail.com"
       ]
     ];
 
